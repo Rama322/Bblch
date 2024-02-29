@@ -6,8 +6,8 @@ const mainKeyboard = Markup.keyboard([
 
 const categoryKeyboard = Markup.inlineKeyboard([
   [
-    Markup.button.callback("Электронные сигареты", "eCigaretts"),
-    Markup.button.callback("Одноразовые сигареты", "oECigaretts"),
+    Markup.button.callback("Поды", "eCigaretts"),
+    Markup.button.callback("Одноразки", "oECigaretts"),
   ],
   [
     Markup.button.callback("Жидкости", "fluid"),
