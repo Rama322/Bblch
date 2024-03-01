@@ -2,9 +2,9 @@ export default (stroki) => {
   const findedChilds = [];
 
   const recursiveFindChilds = (el) => {
-    if (el.ETOGRUPPA === "NET") {
+    if (el.ETOGRUPPA === 'NET') {
       findedChilds.push(
-        `${el.NOMENKLATURA}. В наличии: ${el.VNALICHIIOSTATOK} Шт.`
+        `${el.NOMENKLATURA}. В наличии: ${el.VNALICHIIOSTATOK} Шт.`,
       );
       return;
     }
@@ -12,7 +12,7 @@ export default (stroki) => {
       recursiveFindChilds(stroka);
     });
   };
-  recursiveFindChilds(stroki)
+  recursiveFindChilds(stroki);
 
   return findedChilds;
 };

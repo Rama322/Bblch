@@ -6,6 +6,8 @@ import { mainKeyboard, parentCategoryKeyboard } from './src/mainKeyboard.js';
 import {
   alkalineCommand,
   fluidMainCommand,
+  nonNicotineCommand,
+  saltCommand,
 } from './src/modules/fluid/fluid.js';
 import { eCigarettsMainCommand } from './src/modules/eCigaretts/eCigaretts.js';
 import { oECigarettsMainCommand } from './src/modules/oECigaretts/oECigaretts.js';
@@ -31,7 +33,7 @@ bot.use(
   tobaccoMainCommand,
 );
 //Parent categories commands
-bot.use(alkalineCommand);
+bot.use(alkalineCommand, saltCommand, nonNicotineCommand);
 
 bot.launch();
 // Enable graceful stop
