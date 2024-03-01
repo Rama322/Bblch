@@ -1,56 +1,60 @@
-//eCigaretts, oECigaretts, fluid, tobacco
+//eCigaretts, oECigaretts, fluid, tobacco, parts
 
-export default (allData, categoryName) => {
-  let eCigaretts = [];
-  let oECigaretts = [];
-  let fluid = [];
-  let tobacco = [];
+import findChilds from "./findChilds.js";
 
-  const findChilds = (el) => {
-    if (el.ETOGRUPPA === "NET") {
-      eCigaretts.push(
-        `${el.NOMENKLATURA}. В наличии: ${el.VNALICHIIOSTATOK} Шт.`
-      );
-      return;
-    }
-    el.STROKI.forEach((stroka) => {
-      findChilds(stroka);
-    });
-  };
-
+const categoryFind = (allData, categoryName) => {
+  let findedProducts = [];
+  //Поды
   if (categoryName === "eCigaretts") {
     allData.STROKI.forEach((group) => {
       if (group.NOMENKLATURA === "SIGARETY ELEKTRONNYE") {
-        findChilds(group.STROKI.find((el) => el.NOMENKLATURA === "DEVAYSY"));
+        const childs = findChilds(
+          group.STROKI.find((el) => el.NOMENKLATURA === "DEVAYSY")
+        );
+        findedProducts = [...childs];
       }
     });
-    return eCigaretts;
   }
-
+  //Одноразки
   if (categoryName === "oECigaretts") {
     allData.STROKI.forEach((group) => {
-      if (group.NOMENKLATURA === "SIGARETY ELEKTRONNYE") {
-        findChilds(group.STROKI.find((el) => el.NOMENKLATURA === "DEVAYSY"));
+      if (group.NOMENKLATURA === "ODNORAZOVYE EL. SIGARETY") {
+        const childs = findChilds(
+          group.STROKI.find((el) => el.NOMENKLATURA === "MARKIROVANNYE ESDN")
+        );
+        findedProducts = [...childs];
       }
     });
-    return eCigaretts;
   }
-
+  //ЖИЖЫ
   if (categoryName === "fluid") {
     allData.STROKI.forEach((group) => {
       if (group.NOMENKLATURA === "SIGARETY ELEKTRONNYE") {
         findChilds(group.STROKI.find((el) => el.NOMENKLATURA === "DEVAYSY"));
+        findedProducts = [...childs];
       }
     });
-    return eCigaretts;
   }
-  
+  //SNUS
   if (categoryName === "tobacco") {
     allData.STROKI.forEach((group) => {
       if (group.NOMENKLATURA === "SIGARETY ELEKTRONNYE") {
         findChilds(group.STROKI.find((el) => el.NOMENKLATURA === "DEVAYSY"));
+        findedProducts = [...childs];
       }
     });
-    return eCigaretts;
   }
+  //details
+  if (categoryName === "parts") {
+    allData.STROKI.forEach((group) => {
+      if (group.NOMENKLATURA === "SIGARETY ELEKTRONNYE") {
+        findChilds(group.STROKI.find((el) => el.NOMENKLATURA === "DEVAYSY"));
+        findedProducts = [...childs];
+      }
+    });
+  }
+
+  return findedProducts;
 };
+
+export { categoryFind };
