@@ -25,4 +25,15 @@ const nonNicotineCommand = Composer.action('nonNicotine', (ctx) => {
   nonNicotine.forEach((el) => ctx.reply(el));
 });
 
-export { alkalineCommand, fluidMainCommand, saltCommand, nonNicotineCommand };
+const dIYCommand = Composer.action('dIY', (ctx) => {
+  const dIY = categoryFind(allData, 'dIY');
+
+  dIY.forEach((el) => ctx.reply(el));
+});
+export {
+  alkalineCommand,
+  fluidMainCommand,
+  saltCommand,
+  nonNicotineCommand,
+  dIYCommand,
+};

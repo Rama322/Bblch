@@ -44,7 +44,6 @@ const categoryFind = (allData, categoryName) => {
         );
         const childs = findChilds(alkalineFluid);
         const ioChilds = findChilds(ioFluidPods);
-        s;
         findedProducts = [...childs, ...ioChilds];
       }
     });
@@ -79,6 +78,20 @@ const categoryFind = (allData, categoryName) => {
           (el) => el.NOMENKLATURA === 'BEZ NIKOTINA ESDN',
         );
         const childs = findChilds(nonNicotineFluid);
+        findedProducts = [...childs];
+      }
+    });
+  }
+  if (categoryName === 'dIY') {
+    allData.STROKI.forEach((group) => {
+      if (group.NOMENKLATURA === 'SIGARETY ELEKTRONNYE') {
+        const fluid = group.STROKI.find(
+          (el) => el.NOMENKLATURA === 'SAMOZAMES',
+        );
+        const dIYFluid = fluid.STROKI.find(
+          (el) => el.NOMENKLATURA === 'NIKOTIN',
+        );
+        const childs = findChilds(dIYFluid);
         findedProducts = [...childs];
       }
     });

@@ -5,6 +5,7 @@ import { message } from 'telegraf/filters';
 import { mainKeyboard, parentCategoryKeyboard } from './src/mainKeyboard.js';
 import {
   alkalineCommand,
+  dIYCommand,
   fluidMainCommand,
   nonNicotineCommand,
   saltCommand,
@@ -33,7 +34,7 @@ bot.use(
   tobaccoMainCommand,
 );
 //Parent categories commands
-bot.use(alkalineCommand, saltCommand, nonNicotineCommand);
+bot.use(alkalineCommand, saltCommand, nonNicotineCommand, dIYCommand);
 
 bot.launch();
 // Enable graceful stop
