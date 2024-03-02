@@ -1,12 +1,12 @@
 import { Markup } from 'telegraf';
 
 const mainKeyboard = Markup.keyboard([
-  ['Прайс лист', 'Гарантийные условия'],
+  ['Прайс лист', 'Гарантийные условия', 'Поиск'],
 ]).resize();
 
 const parentCategoryKeyboard = Markup.inlineKeyboard([
   [
-    Markup.button.callback('Поды', 'eCigaretts'),
+    Markup.button.callback('Девайсы', 'eCigaretts'),
     Markup.button.callback('Одноразки', 'oECigaretts'),
   ],
   [
