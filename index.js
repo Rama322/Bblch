@@ -1,7 +1,6 @@
 import allData from './Products.json' with { type: 'json' };
 import 'dotenv/config';
 import { Telegraf } from 'telegraf';
-import { message } from 'telegraf/filters';
 import { mainKeyboard, parentCategoryKeyboard } from './src/mainKeyboard.js';
 import {
   alkalineCommand,
@@ -10,7 +9,7 @@ import {
   nonNicotineCommand,
   saltCommand,
 } from './src/modules/fluid/fluid.js';
-import { searchCommand } from './src/modules/search/searchCommand.js';
+import { searchCommand } from './src/modules/search/searchjs';
 import { eCigarettsMainCommand } from './src/modules/eCigaretts/eCigaretts.js';
 import { oECigarettsMainCommand } from './src/modules/oECigaretts/oECigaretts.js';
 import { partsMainCommand } from './src/modules/parts/parts.js';
@@ -29,9 +28,9 @@ bot.hears('Прайс лист', async (ctx) => {
 
 bot.hears('Поиск', searchCommand);
 
-bot.on('message', (ctx) => {
-  allDataSearch(ctx.message.text, allData);
-});
+// bot.on('message', (ctx) => {
+//   allDataSearch(ctx.message.text, allData);
+// });
 
 //Root categories commands
 bot.use(
