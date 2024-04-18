@@ -30,7 +30,6 @@ const findECigaretts = (allData) => {
       const childs = findChilds(
         group.STROKI.find((el) => el.NOMENKLATURA === 'DEVAYSY'),
       );
-      console.log(childs);
       finded = [...finded, ...childs];
     }
   });

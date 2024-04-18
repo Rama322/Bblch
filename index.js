@@ -10,11 +10,12 @@ import {
   nonNicotineCommand,
   saltCommand,
 } from './src/modules/fluid/fluid.js';
+import { searchCommand } from './src/modules/search/searchCommand.js';
 import { eCigarettsMainCommand } from './src/modules/eCigaretts/eCigaretts.js';
 import { oECigarettsMainCommand } from './src/modules/oECigaretts/oECigaretts.js';
 import { partsMainCommand } from './src/modules/parts/parts.js';
 import { tobaccoMainCommand } from './src/modules/tobacco/tobacco.js';
-import search from './src/utils/search.js';
+import allDataSearch from './src/utils/allDataSearch.js';
 
 const bot = new Telegraf(process.env.API_KEY);
 
@@ -26,12 +27,10 @@ bot.hears('Прайс лист', async (ctx) => {
   await ctx.reply('Категории:', parentCategoryKeyboard);
 });
 
-bot.hears('Поиск', async (ctx) => {
-  await ctx.reply('Введите текст');
-});
+bot.hears('Поиск', searchCommand);
 
 bot.on('message', (ctx) => {
-  search(ctx.message.text, allData);
+  allDataSearch(ctx.message.text, allData);
 });
 
 //Root categories commands
@@ -50,4 +49,4 @@ bot.launch();
 process.once('SIGINT', () => bot.stop('SIGINT'));
 process.once('SIGTERM', () => bot.stop('SIGTERM'));
 
-export { allData };
+export { allData, bot };
