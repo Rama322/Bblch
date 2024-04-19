@@ -4,6 +4,9 @@
   "description": "",
   "main": "index.js",
   "type": "module",
+  "nodemonConfig": {
+    "watch": ["src"]
+  },
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
